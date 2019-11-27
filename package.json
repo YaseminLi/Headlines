@@ -1,0 +1,42 @@
+{
+  "name": "headlines",
+  "version": "1.0.0",
+  "description": "react-headlines",
+  "main": "root.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildP": "webpack -p",
+    "build": "webpack",
+    "dev": "webpack-dev-server",
+    "stats": "webpack --profile --json > compilation-stats.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "antd": "^3.25.1",
+    "antd-mobile": "^2.3.1",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-import": "^1.12.2",
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.10.3",
+    "less-loader": "^4.1.0",
+    "react-pull-to-refresh": "^1.1.2",
+    "react-responsive": "^6.1.2",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-touch-loader": "^1.1.4",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "dependencies": {
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  }
+}

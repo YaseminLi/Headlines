@@ -1,0 +1,86 @@
+/* html{
+    font-size: 50px;
+}
+#mobileheader{
+    flex:1;
+    background: white;
+}
+
+#mobileheader header{
+    border-bottom: 1px solid #1890ff;
+    padding-top: 10px;
+    padding-left:10px;
+}
+
+#mobileheader header img{
+    height:120px;
+}
+#mobileheader header span{
+    font-size:100px;
+    color: #1890ff;
+    vertical-align: top;/*让元素的顶端和行内最高元素对齐*/
+    /* padding-left: 10px;
+}
+#mobileheader footer{
+    text-align:center;
+    color: #1890ff
+}
+#mobileheader header i{
+    font-size: 1.5rem;
+    float: right;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    color: #1890ff;
+}
+/* .mobile{
+    background: pink;
+} */
+/* 导航栏字体大小 */
+/* .mobile .ant-tabs-nav-container{
+    font-size:36px
+}
+.mobile  .ant-tabs-tab{
+    width:140px;
+}
+.mobile .ant-tabs-tab-next-icon svg{
+    width: 3em;
+    height:3em
+}
+.mobile .ant-tabs-tab-prev-icon svg{   width: 3em;
+    height:3em
+}
+/* .mobile .ant-carousel .slick-current{margin:0 40px;} */
+/* .mobile .ant-carousel .slick-current img{width: 100%}
+.mobile .ant-list-item{padding:20px 40px}
+.mobile .ant-list-item img{width:320px;height:240px}
+.mobile .ant-list-item .ant-list-item-meta{padding-left: 20px}
+.mobile .ant-list-item .ant-list-item-meta-description{font-size: 20px}
+.mobile .ant-list-item .ant-list-item-meta-title {
+    margin-bottom: 4px;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 40px;
+    line-height: inherit;
+}
+.mobile .ant-list-item .ant-list-item-meta-description .moble_list_realtype{
+    padding:5px;
+    font-size: 20px;
+    font-style: italic;
+    color: red;
+    background: rgb(236, 221, 221);
+}
+.mobile .tloader-btn{
+    font-size:36px !important;
+}
+ .mobile .ant-tabs-nav-scroll{
+    font-size:36px
+}
+.mobileuccenter .ant-list-item{
+    display: flex;
+    justify-content:space-between;
+    font-size:24px;
+}
+.mobileuccenter .ant-list-item .ucdetails{
+    margin-right:20px;
+    color:red}
+.mobileuccenter .ant-list-item p{margin:0;}
+  */ 

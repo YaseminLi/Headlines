@@ -1,0 +1,43 @@
+/* 头部 */
+header{padding-top: 10px}
+header .logo svg{height: 50px;width: 50px;vertical-align: baseline}
+header .logo span{font-size: 40px;padding-left: 5px;color:black;}
+header .register {float:right}
+header .register a{display:inline}
+
+/* 主体 */
+.pcIndex .container{display: flex; flex-direction: row}
+.pcIndex .container .leftContainer{width: 400px}
+.pcIndex .container .tabs_news{margin-left:50px}
+.pcIndex .container .tabs_news .ant-card-body{padding:20px;}
+.pcIndex .container .tabs_news .ant-card-body ul{padding:0px;}
+.pcIndex .container .tabs_news .ant-card-body ul li{list-style: none;}
+.pcIndex .container .tabs_news .ant-card-body ul li a{color: black;}
+.pcIndex .container .pc_prodcuct{width: 300px;margin-left: 50px;}
+.pcIndex .container .pc_prodcuct .ant-tabs-content a{color:black;padding-right: 10px}
+.imageNewsList{margin-bottom:10px}
+.imageNewsList .pc-news-image-block{display: inline-block;padding:8px}
+.imageNewsList .ant-card-body{padding:6px}
+.imageNewsList .ant-card-meta-title{font-size:14px}
+.imageNewsList .ant-card-meta-description{font-size:12px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis}
+
+.pc_news_details .imageNewsList{padding-top: 50px;padding-left: 50px;width: 450px;}
+.pcuccenter .ant-list-item{display: flex;justify-content:space-between;font-size:16px;}
+.pcuccenter .ant-list-item p{margin:0}
+
+/* 底部 */
+footer{text-align: center;margin-top:100px}
+
+
+/*
+
+.pcuccenter .ant-list-item{
+    display: flex;
+    justify-content:space-between;
+    font-size:16px;
+}
+.pcuccenter .ant-list-item .ucdetails{
+    margin-right:20px;
+    color:#1890ff}
+.pcuccenter .ant-list-item p{margin:0;}
+ */ 
