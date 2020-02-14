@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import { Menu, Icon, Modal, Button, Tabs, Form, Input } from 'antd';
 import { BrowserRouter, Link } from 'react-router-dom';
-//import { tuple } from 'antd/lib/_util/type';
 
 const MenuItem = Menu.Item;
 const TabPane = Tabs.TabPane;
@@ -10,8 +9,8 @@ const TabPane = Tabs.TabPane;
 // const MenuItemGroup = Menu.ItemGroup;
 const FormItem = Form.Item;
 const IconFont = Icon.createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_1146249_ipo45oxj7xs.js',
-  });
+    scriptUrl: '//at.alicdn.com/t/font_1146249_qk9kudzqzx.js',
+});
 
 class PCHeader extends React.Component {
     constructor() {
@@ -29,7 +28,7 @@ class PCHeader extends React.Component {
     //组件将要加载前
     componentWillMount() {
         console.log(localStorage.userNickName);
-        
+
         if (localStorage.userNickName !== '') {
             this.setState({
                 hasLogined: true,
@@ -107,7 +106,7 @@ class PCHeader extends React.Component {
                 <Row>
                     <Col span={2}></Col>
                     <Col span={4} className='logo'>
-                        <IconFont type='iconNews'/>
+                        <IconFont type='iconNews' />
                         <span>ReactNews</span>
                     </Col>
                     <Col span={16}>
@@ -120,48 +119,49 @@ class PCHeader extends React.Component {
                             <MenuItem key='jiankang'> <Icon type="appstore" />健康</MenuItem>
                             <MenuItem key='shishang'> <Icon type="appstore" />时尚</MenuItem>
                             {userShow}
-                            <Modal
-                                title="用户中心"
-                                wrapClassName='vertical-center-modal'
-                                visible={this.state.modalVisible}
-                                onOk={() => this.setModalVisible(false)}
-                                onCancel={this.setModalVisible.bind(this, false)}
-                                okText='关闭'
-                                cancelText='取消'
-                            >
-                                <Tabs type="card" onChange={this.callback.bind(this)}>
-                                    <TabPane tab="登录" key="1">
-                                        <Form layout='horizontal' onSubmit={this.handleSubmit.bind(this)}>
-                                            <FormItem label='账户'>
-                                                {getFieldDecorator('userName')(<Input placeholder="请输入用户名" />)}
-                                            </FormItem>
-                                            <FormItem label='密码'>
-                                                {getFieldDecorator('password')(<Input type='password' placeholder="请输入您的密码" />)}
-                                            </FormItem>
-                                            <Button type='primary' htmlType='submit'>登录</Button>
-                                        </Form>
-                                    </TabPane>
-                                    <TabPane tab="注册" key="2">
-                                        <Form layout='horizontal' onSubmit={this.handleSubmit.bind(this)}>
-                                            <FormItem label='账户'>
-                                                {getFieldDecorator('r_userName')(<Input placeholder="请输入用户名" />)}
-                                            </FormItem>
-                                            <FormItem label='密码'>
-                                                {getFieldDecorator('r_password')(<Input type='password' placeholder="请输入您的密码" />)}
-                                            </FormItem>
-                                            <FormItem label='密码'>
-                                                {getFieldDecorator('r_confirmPassword')(<Input type='password' placeholder="请确认您的密码" />)}
-                                            </FormItem>
-                                            {/* 课程上的方法扩展运算符啥意思
+
+                        </Menu>
+                        <Modal
+                            title="用户中心"
+                            wrapClassName='vertical-center-modal'
+                            visible={this.state.modalVisible}
+                            onOk={() => this.setModalVisible(false)}
+                            onCancel={this.setModalVisible.bind(this, false)}
+                            okText='关闭'
+                            cancelText='取消'
+                        >
+                            <Tabs type="card" onChange={this.callback.bind(this)}>
+                                <TabPane tab="登录" key="1">
+                                    <Form layout='horizontal' onSubmit={this.handleSubmit.bind(this)}>
+                                        <FormItem label='账户'>
+                                            {getFieldDecorator('userName')(<Input placeholder="请输入用户名" />)}
+                                        </FormItem>
+                                        <FormItem label='密码'>
+                                            {getFieldDecorator('password')(<Input type='password' placeholder="请输入您的密码" />)}
+                                        </FormItem>
+                                        <Button type='primary' htmlType='submit'>登录</Button>
+                                    </Form>
+                                </TabPane>
+                                <TabPane tab="注册" key="2">
+                                    <Form layout='horizontal' onSubmit={this.handleSubmit.bind(this)}>
+                                        <FormItem label='账户'>
+                                            {getFieldDecorator('r_userName')(<Input placeholder="请输入用户名" />)}
+                                        </FormItem>
+                                        <FormItem label='密码'>
+                                            {getFieldDecorator('r_password')(<Input type='password' placeholder="请输入您的密码" />)}
+                                        </FormItem>
+                                        <FormItem label='密码'>
+                                            {getFieldDecorator('r_confirmPassword')(<Input type='password' placeholder="请确认您的密码" />)}
+                                        </FormItem>
+                                        {/* 课程上的方法扩展运算符啥意思
                                             <FormItem label='确认密码'>
                                                 <Input type='password' placeholder='请确认您的密码' {...getFieldDecorator('r_username')} />
                                             </FormItem> */}
-                                            <Button type='primary' htmlType='submit'>注册</Button>
-                                        </Form>
-                                    </TabPane>
-                                </Tabs>
-                            </Modal>
-                        </Menu>
+                                        <Button type='primary' htmlType='submit'>注册</Button>
+                                    </Form>
+                                </TabPane>
+                            </Tabs>
+                        </Modal>
                     </Col>
                     <Col span={2}></Col>
                 </Row>

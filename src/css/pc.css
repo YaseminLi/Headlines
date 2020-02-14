@@ -1,8 +1,10 @@
 /* 头部 */
 header{padding-top: 10px}
+header .logo {display: flex;align-items: center;}
 header .logo svg{height: 50px;width: 50px;vertical-align: baseline}
-header .logo span{font-size: 40px;padding-left: 5px;color:black;}
-header .register {float:right}
+header .logo span{font-size: 32px;padding-left: 5px;color:black;}
+/* header .register {float:right;} */
+header .register {display: flex;flex-direction: row;}
 header .register a{display:inline}
 
 /* 主体 */
@@ -17,6 +19,8 @@ header .register a{display:inline}
 .pcIndex .container .pc_prodcuct .ant-tabs-content a{color:black;padding-right: 10px}
 .imageNewsList{margin-bottom:10px}
 .imageNewsList .pc-news-image-block{display: inline-block;padding:8px}
+.imageNewsList .pc-news-image-block img {height:71px}
+.imageNewsList .ant-card{display: flex;flex-direction: column;}
 .imageNewsList .ant-card-body{padding:6px}
 .imageNewsList .ant-card-meta-title{font-size:14px}
 .imageNewsList .ant-card-meta-description{font-size:12px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis}

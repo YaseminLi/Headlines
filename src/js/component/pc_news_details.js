@@ -5,6 +5,7 @@ import PCFooter from './pc_footer';
 import PCNewsImageBlock from './pc_news_image_block';
 import { BackTop } from 'antd';
 import CommonComments from './common_comments'
+import newsData from '../../../newsData/newsBlock'
 export default class PCNewsDetails extends React.Component {
     constructor() {
         super();
@@ -23,11 +24,13 @@ export default class PCNewsDetails extends React.Component {
                 this.setState({ newsItem: json });
                 document.title = this.state.newsItem.title + '-React News | React 驱动的新闻平台'
             });
+           
     }
     createMarkup() {
         return { __html: this.state.newsItem.pagecontent }
     }
     render() {
+        const topNews=newsData.top
         return (
             <div>
                 <PCHeader />
@@ -38,7 +41,7 @@ export default class PCNewsDetails extends React.Component {
                         <CommonComments uniquekey={this.props.match.params.uniquekey}/>
                     </Col>
                     <Col span={6}>
-                        <PCNewsImageBlock count='20' type='top' cardtitle='相关新闻' width='100%' cardwidth='112px' />
+                        <PCNewsImageBlock count='20' type='top' cardtitle='相关新闻' width='100%' cardwidth='112px' news={topNews}/>
                     </Col>
                     <Col span={2}></Col>
                 </Row>

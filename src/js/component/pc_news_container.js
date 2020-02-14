@@ -5,6 +5,8 @@ const TabPane = Tabs.TabPane;
 import PCNewsClock from './pc_news_block';
 import PCNewsImageBlock from './pc_news_image_block';
 import PCProduct from './pc_product'
+import newsData from '../../../newsData/newsBlock'
+
 export default class PCNewsContainer extends React.Component {
     render() {
         const settings = {
@@ -14,7 +16,11 @@ export default class PCNewsContainer extends React.Component {
             slidesToShow: 1,
             slidesToScroll: 1,
             autoplay: true
-        };
+        }; 
+        const guojiNews=newsData.guoji
+        const topNews=newsData.top
+        const guoneiNews=newsData.guonei
+        const yuleNews=newsData.yule
         return (
             <div>
                 <Row>
@@ -29,14 +35,14 @@ export default class PCNewsContainer extends React.Component {
                                     <div><img src='./src/images/carousel_4.jpg' /></div>
                                 </Carousel>
                             </div>
-                            <PCNewsImageBlock count='6' type='guoji' cardtitle='国际新闻' cardwidth='112px' />
+                            <PCNewsImageBlock count='6' type='guoji' cardtitle='国际新闻' cardwidth='112px' news={guojiNews}/>
                         </div>
                         <Tabs className='tabs_news' style={{ width: 600 }}>
                             <TabPane tab='头条新闻' key='1'>
-                                <PCNewsClock count='27' type='top' bordered="false" />
+                                <PCNewsClock count='25' type='top' bordered="false" news={topNews}/>
                             </TabPane>
                             <TabPane tab='娱乐新闻' key='2'>
-                                <PCNewsClock count='27' type='yule' width="400px" bordered="false" />
+                                <PCNewsClock count='27' type='yule' width="400px" bordered="false" news={yuleNews}/>
                             </TabPane>
                         </Tabs>
                         <Tabs className='pc_prodcuct'>
@@ -51,8 +57,8 @@ export default class PCNewsContainer extends React.Component {
                     <Col span={2}></Col>
                     <Col span={20}>
                         <div>
-                            <PCNewsImageBlock count='14' type='guonei' cardtitle='国内新闻' width='100%' cardwidth='112px' />
-                            <PCNewsImageBlock count='28' type='yule' cardtitle='娱乐新闻' width='100%' cardwidth='112px' />
+                            <PCNewsImageBlock count='9' type='guonei' cardtitle='国内新闻' width='100%' cardwidth='112px' news={guoneiNews}/>
+                            <PCNewsImageBlock count='18' type='yule' cardtitle='娱乐新闻' width='100%' cardwidth='112px' news={yuleNews}/>
                         </div>
                     </Col>
                     <Col span={2}></Col>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Card } from 'antd';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import newsBlock from '../../../newsData/newsBlock'
 const { Meta } = Card;
 
 export default class PCNewsImageBlock extends React.Component {
@@ -15,11 +16,16 @@ export default class PCNewsImageBlock extends React.Component {
         var myFetchOptions = {
             method: 'GET'
         };
-        fetch("https://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=" + this.props.type + "&count=" + this.props.count, myFetchOptions)
-            .then(response => response.json())
-            .then(json => {
-                this.setState({ news: json });
-            });
+        //数据获取：
+        //一：api
+        // fetch("https://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=" + this.props.type + "&count=" + this.props.count, myFetchOptions)
+        //     .then(response => response.json())
+        //     .then(json => {
+        //         this.setState({ news: json });
+        //     });
+
+        //本地mock数据
+        this.setState({ news: this.props.news.slice(0,this.props.count) });
     }
     render() {
         const { news } = this.state;
@@ -30,7 +36,7 @@ export default class PCNewsImageBlock extends React.Component {
                 (<div key={newsItem.uniquekey} className='pc-news-image-block'>
                     <Router><Link to={`details/${newsItem.uniquekey}`} target="_blank">
                         <Card
-                            style={{ width: this.props.cardwidth }}
+                            style={{ width: this.props.cardwidth}}
                             bordered={false}
                             className='image_block'
                             cover={<img alt="pc_news_image_block" src={newsItem.thumbnail_pic_s} />}

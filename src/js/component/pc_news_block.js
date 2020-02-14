@@ -14,11 +14,16 @@ export default class PCNewsBlock extends React.Component {
         var myFetchOptions = {
             method: 'GET'
         };
-        fetch("https://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=" + this.props.type + "&count=" + this.props.count, myFetchOptions)
-            .then(response => response.json())
-            .then(json => {
-                this.setState({ news: json });
-            });
+        //数据获取：
+        //一：从api获取数据
+        // fetch("https://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=" + this.props.type + "&count=" + this.props.count, myFetchOptions)
+        //     .then(response => response.json())
+        //     .then(json => {
+        //         this.setState({ news: json });
+        //     });
+
+        //二：本地mock数据
+        this.setState({news:this.props.news.slice(0,this.props.count)})
     }
     render() {
         const { news } = this.state;
