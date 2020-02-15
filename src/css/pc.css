@@ -8,14 +8,18 @@ header .register {display: flex;flex-direction: row;}
 header .register a{display:inline}
 
 /* 主体 */
-.pcIndex .container{display: flex; flex-direction: row}
-.pcIndex .container .leftContainer{width: 400px}
-.pcIndex .container .tabs_news{margin-left:50px}
+.pcIndex .container{display: flex; flex-direction: row;margin-top: 20px;}
+.pcIndex .container .leftContainer{width: 500px}
+.pcIndex .container .top{margin-left:50px;height:300px;display: flex;flex-direction: row;flex-wrap: nowrap;background: #f8f8f8;}
+.pcIndex .container .tabs_news{flex:1;}
+.pcIndex .container .tabs_news .header{background: url(https://static.ws.126.net/163/f2e/news/second2016/images/sprite_sec.png) no-repeat;    height: 21px;
+    line-height: 300px;
+    overflow: hidden;}
 .pcIndex .container .tabs_news .ant-card-body{padding:20px;}
 .pcIndex .container .tabs_news .ant-card-body ul{padding:0px;}
 .pcIndex .container .tabs_news .ant-card-body ul li{list-style: none;}
 .pcIndex .container .tabs_news .ant-card-body ul li a{color: black;}
-.pcIndex .container .pc_prodcuct{width: 300px;margin-left: 50px;}
+.pcIndex .container .pc_prodcuct{flex:1;margin-left: 50px;}
 .pcIndex .container .pc_prodcuct .ant-tabs-content a{color:black;padding-right: 10px}
 .imageNewsList{margin-bottom:10px}
 .imageNewsList .pc-news-image-block{display: inline-block;padding:8px}
