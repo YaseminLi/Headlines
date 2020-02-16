@@ -41,36 +41,38 @@ class PCHeader extends React.Component {
         this.setState({ modalVisible: value })
     }
     handleClick(e) {
-        if (e.key == 'register') {
-            this.setState({ current: 'register' });
-            this.setModalVisible(true);
-        } else {
-            this.setState({ current: 'e.key' });
-        }
+        this.setState({ current: 'e.key' });
+        console.log('wawa');
     }
     handleSubmit(e) {
         e.preventDefault();
-        var myFetchOptions = {
-            method: 'GET'
-        };
-        var formData = this.props.form.getFieldsValue();
-        console.log(formData);
-        fetch("https://newsapi.gugujiankong.com/Handler.ashx?action=" + this.state.action
-            + "&username=" + formData.userName + "&password=" + formData.password
-            + "&r_userName=" + formData.r_userName + "&r_password="
-            + formData.r_password + "&r_confirmPassword="
-            + formData.r_confirmPassword, myFetchOptions)
-            .then(response => response.json())
-            .then(json => {
-                this.setState({ userNickName: json.NickUserName, userId: json.UserId });
-                localStorage.userId = json.UserId;
-                localStorage.userNickName = json.NickUserName;
-            });
-        // message.success("请求成功！");
-        if (this.state.action == 'login') {
-            this.setState({ hasLogined: true });
-        }
+        // var myFetchOptions = {
+        //     method: 'GET'
+        // };
+        // var formData = this.props.form.getFieldsValue();
+        // console.log(formData);
+        // fetch("https://newsapi.gugujiankong.com/Handler.ashx?action=" + this.state.action
+        //     + "&username=" + formData.userName + "&password=" + formData.password
+        //     + "&r_userName=" + formData.r_userName + "&r_password="
+        //     + formData.r_password + "&r_confirmPassword="
+        //     + formData.r_confirmPassword, myFetchOptions)
+        //     .then(response => response.json())
+        //     .then(json => {
+        //         this.setState({ userNickName: json.NickUserName, userId: json.UserId });
+        //         localStorage.userId = json.UserId;
+        //         localStorage.userNickName = json.NickUserName;
+        //     });
+        // // message.success("请求成功！");
+        // if (this.state.action == 'login') {
+        //     this.setState({ hasLogined: true });
+        // }
+        const formData = this.props.form.getFieldsValue();
+        this.setState({
+            userNickName: formData.userName, userId: formData.userId, hasLogined: true
+        })
         this.setModalVisible(false);
+        localStorage.userId = formData.userId;
+        localStorage.userNickName = formData.userName;
     }
     callback(key) {
         if (key == 1) {
@@ -84,10 +86,14 @@ class PCHeader extends React.Component {
             hasLogined: false
         })
     }
+    login() {
+        this.setState({ current: 'register' });
+        this.setModalVisible(true);
+    }
     render() {
         const { getFieldDecorator } = this.props.form;
         const userShow = this.state.hasLogined ?
-            <MenuItem key='logout' className='register'>
+            <div key='logout' className='register'>
                 <Button type="primary" >{this.state.userNickName}</Button>
                 &nbsp;&nbsp;
                 <BrowserRouter>
@@ -97,10 +103,10 @@ class PCHeader extends React.Component {
                 </BrowserRouter>
                 &nbsp;&nbsp;
             <Button type="dashed" onClick={this.logout.bind(this)}>退出</Button>
-            </MenuItem>
-            : <MenuItem key='register' className='register'>
-                <Icon type='login' />注册/登录
-            </MenuItem>;
+            </div>
+            : <div key='register' className='register' onClick={this.login.bind(this)}>
+                <Button type="primary" >注册/登录</Button>
+            </div>;
         return (
             <header>
                 <Row>
@@ -109,7 +115,7 @@ class PCHeader extends React.Component {
                         <IconFont type='iconNews' />
                         <span>ReactNews</span>
                     </Col>
-                    <Col span={16}>
+                    <Col span={16} className='tags' >
                         <Menu mode='horizontal' selectedKeys={[this.state.current]} onClick={this.handleClick.bind(this)}>
                             <MenuItem key='top'> <Icon type="appstore" />头条</MenuItem>
                             <MenuItem key='guonei'> <Icon type="appstore" />国内</MenuItem>
@@ -118,9 +124,8 @@ class PCHeader extends React.Component {
                             <MenuItem key='tiyu'> <Icon type="appstore" />体育</MenuItem>
                             <MenuItem key='jiankang'> <Icon type="appstore" />健康</MenuItem>
                             <MenuItem key='shishang'> <Icon type="appstore" />时尚</MenuItem>
-                            {userShow}
-
                         </Menu>
+                        {userShow}
                         <Modal
                             title="用户中心"
                             wrapClassName='vertical-center-modal'

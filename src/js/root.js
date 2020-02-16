@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter,Route,Switch} from 'react-router-dom';
 import PCIndex from './component/pc_index';
 import MobileIndex from './component/mobile_index';
-// import 'antd/dist/antd.css';
 import MediaQuery from 'react-responsive';
 import PCNewsDetails from './component/pc_news_details'
 import MobileNewsDetails from './component/mobile_new_details';
@@ -17,7 +16,8 @@ class Root extends React.Component {
                     <BrowserRouter>
                         <Switch>
                             <Route exact path='/' component={PCIndex}></Route>
-                            <Route path='/details/:uniquekey' component={PCNewsDetails}></Route>
+                            {/* <Route path='/details/:uniquekey' component={PCNewsDetails}></Route> */}
+                            <Route path='/details' component={PCNewsDetails}></Route>
                             <Route path='/usercenter' component={PCUserCenter}></Route>
                         </Switch>
                     </BrowserRouter>
@@ -26,7 +26,8 @@ class Root extends React.Component {
                 <BrowserRouter>
                         <Switch>
                             <Route exact path='/' component={MobileIndex}></Route>
-                            <Route path='/details/:uniquekey' component={MobileNewsDetails}></Route>
+                            {/* <Route path='/details/:uniquekey' component={MobileNewsDetails}></Route> */}
+                            <Route path='/details' component={MobileNewsDetails}></Route>
                             <Route path='/usercenter' component={MobileUserCenter}></Route>
                         </Switch>
                     </BrowserRouter>

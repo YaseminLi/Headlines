@@ -8,10 +8,10 @@
 // },
 const news = {
     top: [{
-        "title": "暴力抗法案！防疫期间聚众打牌打伤民警",
+        "title": "多国发生疫情灾难 联合国宣布全球进入紧急状态？",
         "uniquekey": 1,
         "author_name": "网易原创",
-        "thumbnail_pic_s": "http://cms-bucket.ws.126.net/2020/0213/c981d47dj00q5mnsi00iic000u000f0c.jpg",
+        "thumbnail_pic_s": "http://cms-bucket.ws.126.net/2020/0215/65ae7097j00q5pqz9000xc000fa009tc.jpg",
         "type": "top"
     },
     {

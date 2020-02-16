@@ -2,7 +2,6 @@
 import React from 'react';
 import { Card } from 'antd';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import newsBlock from '../../../newsData/newsBlock'
 const { Meta } = Card;
 
 export default class PCNewsImageBlock extends React.Component {
@@ -34,7 +33,9 @@ export default class PCNewsImageBlock extends React.Component {
             ?
             news.map((newsItem, index) =>
                 (<div key={newsItem.uniquekey} className='pc-news-image-block'>
-                    <Router><Link to={`details/${newsItem.uniquekey}`} target="_blank">
+                    {/* <Router><Link to={`details/${newsItem.uniquekey}`} targt="_blank"> */}
+                    {/* <Router><Link to={`details/1`} targt="_blank"> */}
+                    <Router><Link to={`details`} target="_blank">
                         <Card
                             style={{ width: this.props.cardwidth}}
                             bordered={false}
@@ -61,27 +62,3 @@ export default class PCNewsImageBlock extends React.Component {
         )
     }
 }
-
-//mingming
-// render() {
-//     const { news } = this.state;
-//     const newList = news.length
-//         ? <Router>{news.map((newsItem, index) =>
-//             (<Card
-//                 key={index}
-//                 hoverable={true}//鼠标移过能浮起？不能
-//                 style={{ width: 240 }}
-//                 cover={<img alt="pc_news_image_block" src={newsItem.thumbnail_pic_s} />}
-//             >
-//                 <Meta
-//                     title={newsItem.title}
-//                     description={newsItem.author_name}
-//                 />
-//             </Card>))}</Router>
-//         : '没有加载到任何新闻';
-//     return (
-//         <div className='imageNewsList'>
-//             {newList}
-//         </div>
-//     )
-// }
