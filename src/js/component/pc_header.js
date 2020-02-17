@@ -27,8 +27,6 @@ class PCHeader extends React.Component {
     //页面刷新保留登录状态
     //组件将要加载前
     componentWillMount() {
-        console.log(localStorage.userNickName);
-
         if (localStorage.userNickName !== '') {
             this.setState({
                 hasLogined: true,
@@ -45,7 +43,7 @@ class PCHeader extends React.Component {
         console.log('wawa');
     }
     handleSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
         // var myFetchOptions = {
         //     method: 'GET'
         // };
@@ -66,7 +64,12 @@ class PCHeader extends React.Component {
         // if (this.state.action == 'login') {
         //     this.setState({ hasLogined: true });
         // }
+         // e.preventDefault();
+         console.log('提交');
+         
         const formData = this.props.form.getFieldsValue();
+        console.log(formData);
+        
         this.setState({
             userNickName: formData.userName, userId: formData.userId, hasLogined: true
         })
@@ -148,7 +151,7 @@ class PCHeader extends React.Component {
                                     </Form>
                                 </TabPane>
                                 <TabPane tab="注册" key="2">
-                                    <Form layout='horizontal' onSubmit={this.handleSubmit.bind(this)}>
+                                    <Form layout='horizontal'>
                                         <FormItem label='账户'>
                                             {getFieldDecorator('r_userName')(<Input placeholder="请输入用户名" />)}
                                         </FormItem>

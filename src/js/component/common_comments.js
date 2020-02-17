@@ -1,54 +1,93 @@
 import React from 'react';
-import { Input, Button } from 'antd';
-import { Comment, Icon, Tooltip, Avatar, List, Form, notification } from 'antd';
-import moment from 'moment';
+import { Input, Button, LocaleProvider } from 'antd';
+import { Comment, List, Form, notification } from 'antd';
+import commentsData from '../../../newsData/comments'
+import dateParse from '../../helper/date'
 const { TextArea } = Input;
 const FormItem = Form.Item;
+
 
 class CommonComments extends React.Component {
     constructor() {
         super();
         this.state = {
-            comments: ''
+            comments: '',
+            myComment: ''
         }
     }
     componentDidMount() {
-        var myFetchOptions = {
-            method: 'GET'
-        };
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey=" + this.props.uniquekey, myFetchOptions)
-            .then(response => response.json())
-            .then(json => {
-                this.setState({ comments: json });
-            });
+        //评论数据获取
+        //一：API
+        // var myFetchOptions = {
+        //     method: 'GET'
+        // };
+        // fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey=" + this.props.uniquekey, myFetchOptions)
+        //     .then(response => response.json())
+        //     .then(json => {
+        //         this.setState({ comments: json });
+        //     });
+
+        //二：本地mock
+        this.setState({ comments: commentsData });
+
     }
 
     handleSubmit(e) {
-        e.preventDefault();
-        var myFetchOptions = {
-            method: 'GET'
-        };
-        const formData = this.props.form.getFieldsValue();
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=" + localStorage.userId + "&uniquekey=" + this.props.uniquekey + "&commnet=" + formData.inputcomment, myFetchOptions)
-            .then(response => response.json())
-            .then(json => {
-                this.componentDidMount()
-            });
+        // e.preventDefault();
+        // var myFetchOptions = {
+        //     method: 'GET'
+        // };
+        // const formData = this.props.form.getFieldsValue();
+        // fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=" + localStorage.userId + "&uniquekey=" + this.props.uniquekey + "&commnet=" + formData.inputcomment, myFetchOptions)
+        //     .then(response => response.json())
+        //     .then(json => {
+        //         this.componentDidMount()
+        //     });
+
+        const inputData = this.props.form.getFieldsValue().inputcomment
+        const commitData = {
+            UserName: localStorage.userNickName,
+            Comments: inputData,
+            datetime: dateParse(Date.now())
+        }
+        const comments = this.state.comments
+        comments.push(commitData)
+        let localComments=JSON.parse(localStorage.getItem('comments'))
+        if(localComments){
+            localComments.push(commitData)
+            localStorage.setItem('comments',JSON.stringify(localComments))
+        }else{
+            localStorage.setItem('comments',JSON.stringify([commitData]))
+        }
+        this.setState({ comments: comments, myComment:'' })
     }
     addUserArticle() {
-        var myFetchOptions = {
-            method: 'GET'
-        };
-        const formData = this.props.form.getFieldsValue();
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid=" + localStorage.userId + "&uniquekey=" + this.props.uniquekey, myFetchOptions)
-            .then(response => response.json())
-            .then(json => {
-                //收藏成功后弹出的内容
-                notification['success']({
-                    message: 'ReactNews提醒',
-                    description: '该文章收藏成功',
-                });
-            });
+        // var myFetchOptions = {
+        //     method: 'GET'
+        // };
+        // const formData = this.props.form.getFieldsValue();
+        // fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid=" + localStorage.userId + "&uniquekey=" + this.props.uniquekey, myFetchOptions)
+        //     .then(response => response.json())
+        //     .then(json => {
+        //         //收藏成功后弹出的内容
+        //         notification['success']({
+        //             message: 'ReactNews提醒',
+        //             description: '该文章收藏成功',
+        //         });
+        //     });
+        //收藏成功后弹出的内容
+        notification['success']({
+            message: 'ReactNews提醒',
+            description: '该文章收藏成功',
+        });
+        let collectionList=JSON.parse(localStorage.getItem('collection'))
+        const title=this.props.title
+        if(collectionList){
+            collectionList.push(title)
+        }else{
+            collectionList=[title]
+        }
+        localStorage.setItem('collection',JSON.stringify(collectionList))
     }
     render() {
         const { comments } = this.state;
@@ -74,20 +113,25 @@ class CommonComments extends React.Component {
                 <div className='input-comment'>
                     <Form onSubmit={this.handleSubmit.bind(this)}>
                         <FormItem label='您的评论：' >
-                            {(getFieldDecorator('inputcomment'))(<TextArea rows={2} placeholder="请输入您的评论" />)}
+                            {(getFieldDecorator('inputcomment'))(<TextArea rows={2} placeholder="请输入您的评论" allowClear='true' value={this.state.myComment} />)}
                         </FormItem>
-                        <Button
-                            type="primary"
-                            htmlType='submit'
-                            style={{ marginLeft: '400px', marginRight: '100px' }}
-                        >提交评论</Button>
-                        <Button
-                            type="primary"
-                            htmlType='button'
-                            onClick={this.addUserArticle.bind(this)}
-                        >收藏该文章</Button>
+
                     </Form>
                 </div>
+                <div className='commentdButton'>
+                    <Button
+                        type="primary"
+                        htmlType='submit'
+                        style={{ marginRight: '100px' }}
+                        onClick={this.handleSubmit.bind(this)}
+                    >提交评论</Button>
+                    <Button
+                        type="primary"
+                        htmlType='button'
+                        onClick={this.addUserArticle.bind(this)}
+                    >收藏该文章</Button>
+                </div>
+
                 {/* 不用表单写评论
                     <div className='input-comment'>
                     <p style={{ textAlign: "center" }}>您的评论:</p>

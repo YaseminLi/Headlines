@@ -49,9 +49,12 @@ header .register {display: flex;flex-direction: row;line-height: 48px;align-item
 
 .pc_news_details {margin-top:20px;position: relative;top:60px}
 .pc_news_details .imageNewsList{padding-left: 50px;width: 450px;position: fixed;top:80px}
+
+.pcuccenter .container{top:60px}
 .pcuccenter .ant-list-item{display: flex;justify-content:space-between;font-size:16px;}
 .pcuccenter .ant-list-item p{margin:0}
 
+.common_comments .commentdButton{display: flex;justify-content: center;}
 /* 底部 */
 footer{text-align: center;margin:200px 0}
 
