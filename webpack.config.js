@@ -1,36 +1,18 @@
-// const path = require('path');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const loading=require('./src/images/loading.gif')
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry: {app:'./src/js/root.js',
-            vendor:['react']},
+            vendor:['react']
+        },
     output: {
-        path: __dirname,
+        path: path.join(__dirname,'dist'),
         filename: '[name].js',
-        // publicPath: '/'
     },
-    devtool:'source-map',
     devServer: {
         historyApiFallback: true,
-        // publicPath: '/'
     },
-    // performance: {
-    //     hints: 'warning',
-    //     maxEntrypointSize: 400000,
-    //     maxAssetSize: 100000
-    //   },
-      optimization:{
-          splitChunks:{
-            cacheGroups: {
-                commons: {
-                  name: 'vendor',
-                  chunks: 'initial',
-                  minChunks: 2
-                }
-              }
-          }
-      },
+    devtool:'source-map',
     module: {
         rules: [
             {
@@ -58,7 +40,7 @@ module.exports = {
                         //     importLoaders: 1,
                         //     modules: true,
                         //     localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                        //},
+                        // },
                     }
                 ],
             },
@@ -75,10 +57,21 @@ module.exports = {
 
         ]
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            maxAsyncRequests: 5, //按需加载的最大模块数，vender~app.js这类文件
+            maxInitialRequests:3
+        },
+        runtimeChunk: {
+            name: 'runtime'
+        }
+    },
     plugins: [new HtmlWebpackPlugin({
         title:'Headlines',
         template:'./src/index.html',
-        loading:'./src/images/loading.gif'
+        loading:'./src/images/loading.gif',
+        filename:'index.html'
     })]
 
 }

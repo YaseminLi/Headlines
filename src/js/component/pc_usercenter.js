@@ -2,14 +2,17 @@ import React from 'react';
 import PCHeader from './pc_header';
 import PCFooter from './pc_footer';
 import { Tabs, Row, Col, List, Upload, Icon,Modal} from 'antd';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom'; 
 
 const TabPane = Tabs.TabPane;
-function getBase64(img, callback) {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-}
+function getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  }
 export default class PCUserCenter extends React.Component {
     constructor() {
         super();

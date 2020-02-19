@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Col } from 'antd';
 
 export default class PCFooter extends React.Component {
     render() {

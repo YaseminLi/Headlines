@@ -1,9 +1,8 @@
-import React from 'react';
-import { Row, Col } from 'antd';
+import React from 'react'; 
+import { Row, Col,BackTop  } from 'antd';
 import PCHeader from './pc_header';
 import PCFooter from './pc_footer';
 import PCNewsImageBlock from './pc_news_image_block';
-import { BackTop } from 'antd';
 import CommonComments from './common_comments'
 import newsData from '../../../newsData/newsBlock'
 import newsDetails from '../../../newsData/newsDetails'
