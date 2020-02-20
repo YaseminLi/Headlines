@@ -1,6 +1,4 @@
 import React from 'react';
-import PCHeader from './pc_header';
-import PCFooter from './pc_footer';
 import { Tabs, Row, Col, List, Upload, Icon,Modal} from 'antd';
 import { BrowserRouter, Link } from 'react-router-dom'; 
 
@@ -120,7 +118,6 @@ export default class PCUserCenter extends React.Component {
         );
         return (
             <div className='pcuccenter'>
-                <PCHeader />
                 <Row className='container'>
                     <Col span={2}></Col>
                     <Col span={20}>
@@ -151,8 +148,6 @@ export default class PCUserCenter extends React.Component {
                     </Col>
                     <Col span={2}></Col>
                 </Row>
-
-                <PCFooter />
             </div>
         )
     }

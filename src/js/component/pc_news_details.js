@@ -1,7 +1,5 @@
 import React from 'react'; 
 import { Row, Col,BackTop  } from 'antd';
-import PCHeader from './pc_header';
-import PCFooter from './pc_footer';
 import PCNewsImageBlock from './pc_news_image_block';
 import CommonComments from './common_comments'
 import newsData from '../../../newsData/newsBlock'
@@ -15,15 +13,6 @@ export default class PCNewsDetails extends React.Component {
     // }
     //页面加载完再附进去
     componentDidMount() {
-        // var myFetchOptions = {
-        //     method: 'GET'
-        // };
-        // fetch("https://newsapi.gugujiankong.com/Handler.ashx?action=getnewsitem&uniquekey=" + this.props.match.params.uniquekey, myFetchOptions)
-        //     .then(response => response.json())
-        //     .then(json => {
-        //         this.setState({ newsItem: json });
-        //         document.title = this.state.newsItem.title + '-React News | React 驱动的新闻平台'
-        //     });
         document.title = newsDetails.title + '-React News | React 驱动的新闻平台'
            
     }
@@ -35,7 +24,6 @@ export default class PCNewsDetails extends React.Component {
         const topNews=newsData.top
         return (
             <div>
-                <PCHeader />
                 <Row className='pc_news_details'>
                     <Col span={2}></Col>
                     <Col span={14} className='container'>
@@ -47,8 +35,6 @@ export default class PCNewsDetails extends React.Component {
                     </Col>
                     <Col span={2}></Col>
                 </Row>
-               
-                <PCFooter />
                 <BackTop />
             </div>
         )

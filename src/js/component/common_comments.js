@@ -1,6 +1,5 @@
 import React from 'react';
-import { Input, Button, LocaleProvider } from 'antd';
-import { Comment, List, Form, notification } from 'antd';
+import { Input, Button, Comment, List, Form, notification ,Icon} from 'antd';
 import commentsData from '../../../newsData/comments'
 import dateParse from '../../helper/date'
 const { TextArea } = Input;
@@ -52,14 +51,14 @@ class CommonComments extends React.Component {
         }
         const comments = this.state.comments
         comments.push(commitData)
-        let localComments=JSON.parse(localStorage.getItem('comments'))
-        if(localComments){
+        let localComments = JSON.parse(localStorage.getItem('comments'))
+        if (localComments) {
             localComments.push(commitData)
-            localStorage.setItem('comments',JSON.stringify(localComments))
-        }else{
-            localStorage.setItem('comments',JSON.stringify([commitData]))
+            localStorage.setItem('comments', JSON.stringify(localComments))
+        } else {
+            localStorage.setItem('comments', JSON.stringify([commitData]))
         }
-        this.setState({ comments: comments, myComment:'' })
+        this.setState({ comments: comments, myComment: '' })
     }
     addUserArticle() {
         // var myFetchOptions = {
@@ -76,18 +75,23 @@ class CommonComments extends React.Component {
         //         });
         //     });
         //收藏成功后弹出的内容
-        notification['success']({
+        // notification['success']({
+        //     message: 'ReactNews提醒',
+        //     description: '该文章收藏成功',
+        // });
+        notification.open({
             message: 'ReactNews提醒',
-            description: '该文章收藏成功',
+            description:'该文章收藏成功',
+            icon: <Icon type="smile" style={{ color: '#108ee9' }} />,
         });
-        let collectionList=JSON.parse(localStorage.getItem('collection'))
-        const title=this.props.title
-        if(collectionList){
+        let collectionList = JSON.parse(localStorage.getItem('collection'))
+        const title = this.props.title
+        if (collectionList) {
             collectionList.push(title)
-        }else{
-            collectionList=[title]
+        } else {
+            collectionList = [title]
         }
-        localStorage.setItem('collection',JSON.stringify(collectionList))
+        localStorage.setItem('collection', JSON.stringify(collectionList))
     }
     render() {
         const { comments } = this.state;
@@ -131,16 +135,6 @@ class CommonComments extends React.Component {
                         onClick={this.addUserArticle.bind(this)}
                     >收藏该文章</Button>
                 </div>
-
-                {/* 不用表单写评论
-                    <div className='input-comment'>
-                    <p style={{ textAlign: "center" }}>您的评论:</p>
-                    <TextArea rows={2} placeholder="请输入您的评论" />
-                    <Button 
-                    type="primary" 
-                    style={{ margin: '10px auto', display: 'block' }}
-                    onClick={this.handleClick.bind(this)}>提交评论</Button>
-                </div> */}
             </div>
         )
     }

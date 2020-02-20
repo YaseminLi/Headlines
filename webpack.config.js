@@ -1,18 +1,24 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 module.exports = {
-    mode: 'development',
-    entry: {app:'./src/js/root.js',
-            vendor:['react']
-        },
+    mode: 'production',
+    entry: {
+        app: './src/js/root.js',
+        vendor: ['react']
+    },
     output: {
-        path: path.join(__dirname,'dist'),
+        path: path.join(__dirname, 'dist'),
         filename: '[name].js',
+        chunkFilename: '[name].chunk.js',
+    },
+    resolve:{
+        alias:{'@ant-design/icons/lib/dist$': path.resolve(__dirname, 'src/helper/antdIcon.js')}
     },
     devServer: {
         historyApiFallback: true,
     },
-    devtool:'source-map',
+    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -61,17 +67,22 @@ module.exports = {
         splitChunks: {
             chunks: 'all',
             maxAsyncRequests: 5, //按需加载的最大模块数，vender~app.js这类文件
-            maxInitialRequests:3
+            maxInitialRequests: 3
         },
         runtimeChunk: {
             name: 'runtime'
         }
     },
+    performance: {
+        hints: 'warning',
+        maxEntrypointSize: 400000,
+        maxAssetSize: 900000
+    },
     plugins: [new HtmlWebpackPlugin({
-        title:'Headlines',
-        template:'./src/index.html',
-        loading:'./src/images/loading.gif',
-        filename:'index.html'
-    })]
+        title: 'Headlines',
+        template: './src/index.html',
+        loading: './src/images/loading.gif',
+        filename: 'index.html'
+    }), new AntdDayjsWebpackPlugin()]
 
 }

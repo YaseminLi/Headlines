@@ -1,16 +1,11 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import { Menu, Icon, Modal, Button, Tabs, Form, Input } from 'antd';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter , Link } from 'react-router-dom';
 
 const MenuItem = Menu.Item;
 const TabPane = Tabs.TabPane;
-// const SubMenu = Menu.SubMenu;
-// const MenuItemGroup = Menu.ItemGroup;
 const FormItem = Form.Item;
-const IconFont = Icon.createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_1146249_qk9kudzqzx.js',
-});
 
 class PCHeader extends React.Component {
     constructor() {
@@ -40,33 +35,8 @@ class PCHeader extends React.Component {
     }
     handleClick(e) {
         this.setState({ current: 'e.key' });
-        console.log('wawa');
     }
     handleSubmit(e) {
-        // e.preventDefault();
-        // var myFetchOptions = {
-        //     method: 'GET'
-        // };
-        // var formData = this.props.form.getFieldsValue();
-        // console.log(formData);
-        // fetch("https://newsapi.gugujiankong.com/Handler.ashx?action=" + this.state.action
-        //     + "&username=" + formData.userName + "&password=" + formData.password
-        //     + "&r_userName=" + formData.r_userName + "&r_password="
-        //     + formData.r_password + "&r_confirmPassword="
-        //     + formData.r_confirmPassword, myFetchOptions)
-        //     .then(response => response.json())
-        //     .then(json => {
-        //         this.setState({ userNickName: json.NickUserName, userId: json.UserId });
-        //         localStorage.userId = json.UserId;
-        //         localStorage.userNickName = json.NickUserName;
-        //     });
-        // // message.success("请求成功！");
-        // if (this.state.action == 'login') {
-        //     this.setState({ hasLogined: true });
-        // }
-         // e.preventDefault();
-         console.log('提交');
-         
         const formData = this.props.form.getFieldsValue();
         console.log(formData);
         
@@ -103,9 +73,12 @@ class PCHeader extends React.Component {
                     <Link to={`/usercenter`} target="_blank">
                         <Button type="ghost" >个人中心</Button>
                     </Link>
-                </BrowserRouter>
                 &nbsp;&nbsp;
-            <Button type="dashed" onClick={this.logout.bind(this)}>退出</Button>
+                    <Link to={`/`} target="_blank">
+                    <Button type="dashed" onClick={this.logout.bind(this)}>退出</Button>
+                    </Link>
+                </BrowserRouter>
+            
             </div>
             : <div key='register' className='register' onClick={this.login.bind(this)}>
                 <Button type="primary" >注册/登录</Button>
@@ -115,8 +88,10 @@ class PCHeader extends React.Component {
                 <Row>
                     <Col span={2}></Col>
                     <Col span={4} className='logo'>
-                        <IconFont type='iconNews' />
+                    <BrowserRouter><Link to={`/`} target="_blank">
+                        <i class="iconfont iconNews"></i>
                         <span>ReactNews</span>
+                        </Link></BrowserRouter>
                     </Col>
                     <Col span={16} className='tags' >
                         <Menu mode='horizontal' selectedKeys={[this.state.current]} onClick={this.handleClick.bind(this)}>
@@ -161,10 +136,6 @@ class PCHeader extends React.Component {
                                         <FormItem label='密码'>
                                             {getFieldDecorator('r_confirmPassword')(<Input type='password' placeholder="请确认您的密码" />)}
                                         </FormItem>
-                                        {/* 课程上的方法扩展运算符啥意思
-                                            <FormItem label='确认密码'>
-                                                <Input type='password' placeholder='请确认您的密码' {...getFieldDecorator('r_username')} />
-                                            </FormItem> */}
                                         <Button type='primary' htmlType='submit'>注册</Button>
                                     </Form>
                                 </TabPane>
